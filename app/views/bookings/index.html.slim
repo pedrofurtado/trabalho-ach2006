@@ -1,0 +1,50 @@
+- content_for :page_title, 'Calendário de Reservas'
+
+.box
+  .box-body
+    #bookings-calendar
+    javascript:
+      $(document).ready(function() {
+        $('#bookings-calendar').fullCalendar({
+          locale: 'pt-BR',
+          eventLimit: true,
+          displayEventTime: false,
+          buttonText: {
+            today: 'Hoje'
+          },
+          header: {
+            left: '',
+            center: 'title'
+          },
+          events: #{BookingPresenter.new(@bookings).to_fullcalendar}
+        });
+      });
+
+    br
+    br
+
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Check-in
+        th data-sortable="true" Check-out
+        th data-sortable="true" Quartos
+        th data-sortable="true" Hóspede
+        th data-sortable="true" Acompanhantes
+        th Ações
+      tbody
+        - @bookings.each do |booking|
+          tr
+            td = booking.id
+            td = l booking.check_in
+            td = l booking.check_out
+            td = booking.rooms.map(&:number).join(', ')
+            td = booking.guest.name
+            td = booking.companions
+
+            td
+              = link_to 'Editar', edit_booking_path(booking), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', booking_path(booking), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', booking_path(booking), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a reserva?' }
+
+= link_to 'Criar Reserva', new_booking_path, class: 'btn btn-warning'

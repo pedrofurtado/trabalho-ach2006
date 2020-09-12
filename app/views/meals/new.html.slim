@@ -1,0 +1,7 @@
+- content_for :page_title, 'Criar Refeição'
+
+= simple_form_for @meal do |f|
+  = validation_messages_for @meal
+  = f.input :name
+  = f.input :price
+  = f.button :submit

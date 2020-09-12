@@ -1,0 +1,22 @@
+- content_for :page_title, 'Lista de Refeições'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Preço
+        th Ações
+      tbody
+        - @meals.each do |meal|
+          tr
+            td = meal.id
+            td = meal.name
+            td = meal.price
+            td
+              = link_to 'Editar', edit_meal_path(meal), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', meal_path(meal), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', meal_path(meal), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a refeição?' }
+
+= link_to 'Criar Refeição', new_meal_path, class: 'btn btn-warning'

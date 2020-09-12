@@ -1,0 +1,116 @@
+pt-BR:
+  activerecord:
+    attributes:
+      environments_use:
+        booking: 'Reserva'
+        environment: 'Ambiente'
+        used_at: 'Data de utilização'
+      meals_use:
+        booking: 'Reserva'
+        meal: 'Refeição'
+        used_at: 'Data de utilização'
+      services_use:
+        booking: 'Reserva'
+        service: 'Serviço'
+        used_at: 'Data de utilização'
+      courtesies_use:
+        booking: 'Reserva'
+        courtesy: 'Produtos-Cortesia'
+        used_at: 'Data de utilização'
+      user:
+        name: 'Nome'
+        email: 'Email'
+        password: 'Senha'
+      guest:
+        name: 'Nome'
+        phone: 'Telefone'
+        email: 'Email'
+      cleaning_room:
+        cleaning_date: 'Data da Limpeza'
+        room: 'Quarto'
+      cleaning_environment:
+        cleaning_date: 'Data da Limpeza'
+        environment: 'Ambiente'
+      service:
+        name: 'Nome'
+        description: 'Descrição'
+        price: 'Preço'
+        courtesies: 'Produtos-Cortesia'
+        rooms: 'Quartos'
+      courtesy:
+        name: 'Nome'
+        description: 'Descrição'
+        price: 'Preço'
+        services: 'Serviços'
+      environment:
+        name: 'Nome'
+        description: 'Descrição'
+        price: 'Preço'
+      employee:
+        name: 'Nome'
+        phone: 'Telefone'
+        office: 'Cargo'
+      room:
+        services: 'Serviços'
+        number: 'Número'
+        guest_limit: 'Limite de hóspedes'
+      meal:
+        name: 'Nome'
+        price: 'Preço'
+      booking:
+        check_in: 'Check-in'
+        check_out: 'Check-out'
+        rooms: 'Quartos'
+        guest: 'Hóspede'
+        companions: 'Acompanhantes'
+      invoice:
+        total_value: 'Valor total'
+        payment_type: 'Forma de pagamento'
+        booking: 'Reserva'
+        employee: 'Funcionário'
+    models:
+      guest:
+        one: 'Hóspede'
+        other: 'Hóspedes'
+      cleaning_room:
+        one: 'Limpeza de Quarto'
+        other: 'Limpeza de Quartos'
+      service:
+        one: 'Serviço'
+        other: 'Serviços'
+      environment:
+       one: 'Ambiente'
+       other: 'Ambientes'
+      courtesy:
+        one: 'Produto-cortesia'
+        other: 'Produtos-cortesia'
+      employee:
+        one: 'Funcionário'
+        other: 'Funcionários'
+      room:
+        one: 'Quarto'
+        other: 'Quartos'
+      meal:
+        one: 'Refeição'
+        other: 'Refeições'
+      booking:
+        one: 'Reserva'
+        other: 'Reservas'
+      cleaning_environment:
+        one: 'Limpeza de Ambiente'
+        other: 'Limpeza de Ambientes'
+      invoice:
+        one: 'Fatura'
+        other: 'Faturas'
+      services_use:
+        one: 'Uso do Serviço'
+        other: 'Usos dos Serviços'
+      courtesies_use:
+        one: 'Uso do Produtos-Cortesia'
+        other: 'Usos dos Produtos-Cortesias'
+      environments_use:
+        one: 'Uso do Ambiente'
+        other: 'Usos dos Ambientes'
+      meals_use:
+        one: 'Consumo de Refeição'
+        other: 'Consumo de Refeições'

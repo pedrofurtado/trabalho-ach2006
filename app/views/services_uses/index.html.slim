@@ -1,0 +1,23 @@
+- content_for :page_title, 'Lista de Usos dos Serviços'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Reserva
+        th data-sortable="true" Serviço
+        th data-sortable="true" Data da utilização
+        th Ações
+      tbody
+        - @services_uses.each do |services_use|
+          tr
+            td = services_use.id
+            td = services_use.booking.to_label
+            td = services_use.service.name
+            td = I18n.l services_use.used_at
+            td
+              = link_to 'Editar', edit_services_use_path(services_use), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', services_use_path(services_use), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', services_use_path(services_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o uso do serviço?' }
+= link_to 'Criar Uso de Serviço', new_services_use_path, class: 'btn btn-warning'

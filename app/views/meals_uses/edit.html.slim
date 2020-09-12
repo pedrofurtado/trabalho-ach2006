@@ -1,0 +1,12 @@
+- content_for :page_title, 'Editar Consumo de Refeição'
+
+= simple_form_for @meals_use do |f|
+  = validation_messages_for @meals_use
+  = f.association :booking
+  = f.association :meal
+  = f.input :used_at, as: :date,
+                       start_year: Date.today.year,
+                       end_year: Date.today.year + 1,
+                       order: [:day, :month, :year],
+                       input_html: { class: 'input-date' }
+  = f.button :submit

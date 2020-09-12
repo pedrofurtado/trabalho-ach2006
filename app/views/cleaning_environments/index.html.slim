@@ -1,0 +1,22 @@
+- content_for :page_title, 'Lista de Limpezas de Ambientes'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Data da Limpeza
+        th data-sortable="true" Ambiente
+        th Ações
+      tbody
+        - @cleaning_environments.each do |cleaning_environment|
+          tr
+            td = cleaning_environment.id
+            td = I18n.l cleaning_environment.cleaning_date
+            td = cleaning_environment.environment.name
+            td
+              = link_to 'Editar', edit_cleaning_environment_path(cleaning_environment), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', cleaning_environment_path(cleaning_environment), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', cleaning_environment_path(cleaning_environment), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a Limpeza desse ambiente?' }
+
+= link_to 'Criar Limpeza de Ambiente', new_cleaning_environment_path, class: 'btn btn-warning'

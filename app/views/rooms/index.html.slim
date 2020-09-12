@@ -1,0 +1,22 @@
+- content_for :page_title, 'Lista de Quartos'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Número
+        th data-sortable="true" Limite de Hóspedes
+        th Ações
+      tbody
+        - @rooms.each do |room|
+          tr
+            td = room.id
+            td = room.number
+            td = room.guest_limit
+            td
+              = link_to 'Editar', edit_room_path(room), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', room_path(room), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', room_path(room), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o quarto?' }
+
+= link_to 'Criar Quarto', new_room_path, class: 'btn btn-warning'

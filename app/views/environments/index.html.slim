@@ -1,0 +1,24 @@
+- content_for :page_title, 'Lista de Ambientes'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Descrição
+        th data-sortable="true" Preço
+        th Ações
+      tbody
+        - @environments.each do |environment|
+          tr
+            td = environment.id
+            td = environment.name
+            td = environment.description
+            td = environment.price
+            td
+              = link_to 'Editar', edit_environment_path(environment), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', environment_path(environment), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', environment_path(environment), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o ambiente?' }
+
+= link_to 'Criar Ambiente', new_environment_path, class: 'btn btn-warning'

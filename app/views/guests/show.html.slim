@@ -1,0 +1,40 @@
+- content_for :page_title, 'Visualizar Hóspede'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @guest.id
+
+p.margin-bottom
+  strong.margin-r-5 Nome:
+  = @guest.name
+
+p.margin-bottom
+  strong.margin-r-5 Telefone:
+  = @guest.phone
+
+p.margin-bottom
+  strong.margin-r-5 Email:
+  = @guest.email
+
+= link_to 'Editar', edit_guest_path(@guest), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Hóspedes', guests_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Histórico de Reservas
+  .tab-content
+    #tab-1.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Check in
+          th data-sortable='true' Check out
+          th data-sortable='true' Acompanhantes
+        tbody
+          - @guest.bookings.each do |booking|
+            tr
+              td = booking.id
+              td = I18n.l booking.check_in
+              td = I18n.l booking.check_out
+              td = booking.companions

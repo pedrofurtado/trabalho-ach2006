@@ -1,0 +1,16 @@
+- content_for :page_title, 'Visualizar Limpeza de Ambiente'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @cleaning_environment.id
+
+p.margin-bottom
+  strong.margin-r-5 Data da limpeza:
+  = I18n.l @cleaning_environment.cleaning_date
+
+p.margin-bottom
+  strong.margin-r-5 Ambiente:
+  = @cleaning_environment.environment.name
+
+= link_to 'Editar', edit_cleaning_environment_path(@cleaning_environment), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Limpeza de Ambientes', cleaning_environments_path, class: 'btn btn-xs btn-success margin-r-5'

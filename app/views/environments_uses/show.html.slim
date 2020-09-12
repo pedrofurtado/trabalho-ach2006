@@ -1,0 +1,20 @@
+- content_for :page_title, 'Visualizar Uso do Ambiente'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @environments_use.id
+
+p.margin-bottom
+  strong.margin-r-5 Reserva:
+  = @environments_use.booking.to_label
+
+p.margin-bottom
+  strong.margin-r-5 Ambiente:
+  = @environments_use.environment.name
+
+p.margin-bottom
+  strong.margin-r-5 Data da utilização:
+  = I18n.l @environments_use.used_at
+
+= link_to 'Editar', edit_environments_use_path(@environments_use), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Usos dos Ambientes', environments_uses_path, class: 'btn btn-xs btn-success margin-r-5'

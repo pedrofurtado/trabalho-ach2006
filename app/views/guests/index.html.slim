@@ -1,0 +1,24 @@
+- content_for :page_title, 'Lista de Hóspedes'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Telefone
+        th data-sortable="true" Email
+        th Ações
+      tbody
+        - @guests.each do |guest|
+          tr
+            td = guest.id
+            td = guest.name
+            td = guest.phone
+            td = guest.email
+            td
+              = link_to 'Editar', edit_guest_path(guest), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', guest_path(guest), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', guest_path(guest), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o hóspede?' }
+
+= link_to 'Criar Hóspede', new_guest_path, class: 'btn btn-warning'

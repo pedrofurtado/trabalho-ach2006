@@ -1,0 +1,12 @@
+- content_for :page_title, 'Criar Uso do Produto-Cortesia'
+
+= simple_form_for @courtesies_use do |f|
+  = validation_messages_for @courtesies_use
+  = f.association :booking
+  = f.association :courtesy
+  = f.input :used_at, as: :date,
+                       start_year: Date.today.year,
+                       end_year: Date.today.year + 1,
+                       order: [:day, :month, :year],
+                       input_html: { class: 'input-date' }
+  = f.button :submit

@@ -1,0 +1,18 @@
+- content_for :page_title, 'Lista de Usuários'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Email
+        th Ações
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.id
+            td = user.email
+            td
+              - if user == current_user
+                = link_to 'Editar', edit_user_path(user), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', user_path(user), class: 'btn btn-xs btn-success margin-r-5'

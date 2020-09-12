@@ -1,0 +1,9 @@
+- content_for :page_title, 'Criar Fatura'
+
+= simple_form_for @invoice do |f|
+  = validation_messages_for @invoice
+  = f.input :total_value
+  = f.input :payment_type
+  = f.association :booking
+  = f.association :employee
+  = f.button :submit

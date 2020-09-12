@@ -1,0 +1,24 @@
+- content_for :page_title, 'Visualizar Fatura'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @invoice.id
+
+p.margin-bottom
+  strong.margin-r-5 Valor Total:
+  = @invoice.total_value
+
+p.margin-bottom
+  strong.margin-r-5 Forma de Pagamento:
+  = @invoice.payment_type
+
+p.margin-bottom
+  strong.margin-r-5 Reserva:
+  = @invoice.booking.to_label
+
+p.margin-bottom
+  strong.margin-r-5 Funcionário:
+  = @invoice.employee.name
+
+= link_to 'Editar', edit_invoice_path(@invoice), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Faturas', invoices_path, class: 'btn btn-xs btn-success margin-r-5'

@@ -1,0 +1,148 @@
+h2.margin-bottom Bem-Vindo à página inicial do MyHotel!
+.row
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to guests_path, class: 'text-black' do
+      .info-box.info-box-of-guests
+        span.info-box-icon.bg-blue
+          i.fa.fa-users
+        .info-box-content
+          span.info-box-text Hóspedes
+          span.info-box-number
+            = Guest.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to users_path, class: 'text-black' do
+      .info-box.info-box-of-users
+        span.info-box-icon.bg-red
+          i.fa.fa-user-circle-o
+        .info-box-content
+          span.info-box-text Usuários
+          span.info-box-number
+            = User.count
+  .clearfix.visible-sm-block
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to rooms_path, class: 'text-black' do
+      .info-box.info-box-of-rooms
+        span.info-box-icon.bg-yellow
+          i.fa.fa-bed
+        .info-box-content
+          span.info-box-text Quartos
+          span.info-box-number
+            = Room.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to employees_path, class: 'text-black' do
+      .info-box.info-box-of-employees
+        span.info-box-icon.bg-green
+          i.fa.fa-id-card-o
+        .info-box-content
+          span.info-box-text Funcionários
+          span.info-box-number
+            = Employee.count
+.row
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to environments_path, class: 'text-black' do
+      .info-box.info-box-of-environments
+        span.info-box-icon.bg-blue
+          i.fa.fa-university
+        .info-box-content
+          span.info-box-text Ambientes
+          span.info-box-number
+            = Environment.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to services_path, class: 'text-black' do
+      .info-box.info-box-of-services
+        span.info-box-icon.bg-red
+          i.fa.fa-glass
+        .info-box-content
+          span.info-box-text Serviços
+          span.info-box-number
+            = Service.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to courtesies_path, class: 'text-black' do
+      .info-box.info-box-of-courtesies
+        span.info-box-icon.bg-yellow
+          i.fa.fa-certificate
+        .info-box-content
+          span.info-box-text Produtos-cortesia
+          span.info-box-number
+            = Courtesy.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to meals_path, class: 'text-black' do
+      .info-box.info-box-of-meals
+        span.info-box-icon.bg-green
+          i.fa.fa-cutlery
+        .info-box-content
+          span.info-box-text Refeições
+          span.info-box-number
+            = Meal.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to bookings_path, class: 'text-black' do
+      .info-box.info-box-of-bookings
+        span.info-box-icon.bg-blue
+          i.fa.fa-calendar
+        .info-box-content
+          span.info-box-text Reservas
+          span.info-box-number
+            = Booking.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to invoices_path, class: 'text-black' do
+      .info-box.info-box-of-invoices
+        span.info-box-icon.bg-red
+          i.fa.fa-envelope
+        .info-box-content
+          span.info-box-text Faturas
+          span.info-box-number
+            = Invoice.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to cleaning_rooms_path, class: 'text-black' do
+      .info-box.info-box-of-cleaning-rooms
+        span.info-box-icon.bg-yellow
+          i.fa.fa-trash
+        .info-box-content
+          span.info-box-text Limpeza dos Quartos
+          span.info-box-number
+            = CleaningRoom.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to cleaning_environments_path, class: 'text-black' do
+      .info-box.info-box-of-cleaning-environments
+        span.info-box-icon.bg-green
+          i.fa.fa-trash
+        .info-box-content
+          span.info-box-text Limpezas dos Ambientes
+          span.info-box-number
+            = CleaningEnvironment.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to services_uses_path, class: 'text-black' do
+      .info-box.info-box-of-services-uses
+        span.info-box-icon.bg-blue
+          i.fa.fa-glass
+        .info-box-content
+          span.info-box-text Uso dos Serviços
+          span.info-box-number
+            = ServicesUse.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to courtesies_uses_path, class: 'text-black' do
+      .info-box.info-box-of-cortesies-uses
+        span.info-box-icon.bg-red
+          i.fa.fa-certificate
+        .info-box-content
+          span.info-box-text Uso dos Produtos-Cortesia
+          span.info-box-number
+            = CourtesiesUse.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to environments_uses_path, class: 'text-black' do
+      .info-box.info-box-of-meals
+        span.info-box-icon.bg-yellow
+          i.fa.fa-university
+        .info-box-content
+          span.info-box-text Uso dos Ambientes
+          span.info-box-number
+            = EnvironmentsUse.count
+  .col-md-3.col-sm-6.col-xs-12
+    = link_to meals_uses_path, class: 'text-black' do
+      .info-box.info-box-of-meals
+        span.info-box-icon.bg-green
+          i.fa.fa-cutlery
+        .info-box-content
+          span.info-box-text Consumo de Refeições
+          span.info-box-number
+            = MealsUse.count

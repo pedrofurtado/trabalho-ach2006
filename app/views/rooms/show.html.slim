@@ -1,0 +1,71 @@
+- content_for :page_title, 'Visualizar Quarto'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @room.id
+
+p.margin-bottom
+  strong.margin-r-5 Número:
+  = @room.number
+
+p.margin-bottom
+  strong.margin-r-5 Limite de Hóspedes:
+  = @room.guest_limit
+
+p.margin-bottom
+  strong.margin-r-5 Serviços:
+  ul
+    - @room.services.each do |service|
+      li
+        = service.name
+
+.margin-bottom
+  = link_to 'Editar', edit_room_path(@room), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Quartos', rooms_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Limpeza de Quarto
+    li
+      a data-toggle='tab' href='#tab-2' Reserva atual
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Data da Limpeza
+        tbody
+          - @room.cleaning_rooms.each do |cleaning_room|
+            tr
+              td = cleaning_room.id
+              td = I18n.l cleaning_room.cleaning_date
+    #tab-2.tab-pane
+      - if @current_booking
+        p.margin-bottom
+          strong.margin-r-5 ID:
+          = @current_booking.id
+
+        p.margin-bottom
+          strong.margin-r-5 Check-in:
+          = l @current_booking.check_in
+
+        p.margin-bottom
+          strong.margin-r-5 Check-out:
+          = l @current_booking.check_out
+
+        p.margin-bottom
+          strong.margin-r-5 Quartos:
+          = @current_booking.rooms.map(&:number).join(', ')
+
+        p.margin-bottom
+          strong.margin-r-5 Hóspede:
+          = @current_booking.guest.name
+
+        p.margin-bottom
+          strong.margin-r-5 Acompanhantes:
+          = @current_booking.companions
+      - else
+        p.margin-bottom
+          .margin-r-5 Quarto não possui reserva na data atual.
+

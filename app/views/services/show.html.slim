@@ -1,0 +1,55 @@
+- content_for :page_title, 'Visualizar Serviço'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @service.id
+
+p.margin-bottom
+  strong.margin-r-5 Nome:
+  = @service.name
+
+p.margin-bottom
+  strong.margin-r-5 Descrição:
+  = @service.description
+p.margin-bottom
+  strong.margin-r-5 Preço:
+  = @service.price
+
+p.margin-bottom
+  strong.margin-r-5 Quartos:
+  ul
+    - @service.rooms.each do |room|
+      li
+        = room.number
+
+p.margin-bottom
+  strong.margin-r-5 Produtos-Cortesia:
+  ul
+    - @service.courtesies.each do |courtesy|
+      li
+        = courtesy.name
+
+.margin-bottom
+  = link_to 'Editar', edit_service_path(@service), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Serviços', services_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Hóspedes que utilizaram hoje
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Nome
+          th data-sortable='true' Telefone
+          th data-sortable='true' Email
+        tbody
+          - @service.services_uses.each do |service_use|
+            - if service_use.used_at == Date.today
+              tr
+                td = service_use.booking.guest.id
+                td = service_use.booking.guest.name
+                td = service_use.booking.guest.phone
+                td = service_use.booking.guest.email

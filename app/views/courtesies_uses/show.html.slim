@@ -1,0 +1,20 @@
+- content_for :page_title, 'Visualizar Uso do Produto-Cortesia'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @courtesies_use.id
+
+p.margin-bottom
+  strong.margin-r-5 Reserva:
+  = @courtesies_use.booking.to_label
+
+p.margin-bottom
+  strong.margin-r-5 Produto-Cortesia:
+  = @courtesies_use.courtesy.name
+
+p.margin-bottom
+  strong.margin-r-5 Data da utilização:
+  = I18n.l @courtesies_use.used_at
+
+= link_to 'Editar', edit_courtesies_use_path(@courtesies_use), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Usos dos Produtos-Cortesia', courtesies_uses_path, class: 'btn btn-xs btn-success margin-r-5'

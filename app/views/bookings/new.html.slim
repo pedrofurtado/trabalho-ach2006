@@ -1,0 +1,20 @@
+- content_for :page_title, 'Criar Reserva'
+
+= simple_form_for @booking do |f|
+  = validation_messages_for @booking
+  = f.input :check_in, as: :date,
+                       default: Date.today,
+                       start_year: Date.today.year,
+                       end_year: Date.today.year + 1,
+                       order: [:day, :month, :year],
+                       input_html: { class: 'input-date' }
+  = f.input :check_out, as: :date,
+                       default: Date.tomorrow,
+                       start_year: Date.today.year,
+                       end_year: Date.today.year + 1,
+                       order: [:day, :month, :year],
+                       input_html: { class: 'input-date' }
+  = f.association :rooms
+  = f.association :guest
+  = f.input :companions
+  = f.button :submit

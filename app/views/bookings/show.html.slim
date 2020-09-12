@@ -1,0 +1,145 @@
+- content_for :page_title, 'Visualizar Reserva'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @booking.id
+
+p.margin-bottom
+  strong.margin-r-5 Check-in:
+  = l @booking.check_in
+
+p.margin-bottom
+  strong.margin-r-5 Check-out:
+  = l @booking.check_out
+
+p.margin-bottom
+  strong.margin-r-5 Quartos:
+  = @booking.rooms.map(&:number).join(', ')
+
+p.margin-bottom
+  strong.margin-r-5 Hóspede:
+  = @booking.guest.name
+
+p.margin-bottom
+  strong.margin-r-5 Acompanhantes:
+  = @booking.companions
+
+.margin-bottom
+  = link_to 'Editar', edit_booking_path(@booking), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Reservas', bookings_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Consumo de Refeições
+    li
+      a data-toggle='tab' href='#tab-2' Uso dos Serviços
+    li
+      a data-toggle='tab' href='#tab-3' Consumo dos Produtos-Cortesia
+    li
+      a data-toggle='tab' href='#tab-4' Uso dos Ambientes
+    li
+      a data-toggle='tab' href='#tab-5' Limpeza dos Quartos
+    li
+      a data-toggle='tab' href='#tab-6' Fatura
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Refeição
+          th data-sortable='true' Data da utilização
+          th Ações
+        tbody
+          - @booking.meals_uses.each do |meals_use|
+            tr
+              td = meals_use.id
+              td = meals_use.meal.name
+              td = I18n.l meals_use.used_at
+              td
+                = link_to 'Editar', edit_meals_use_path(meals_use), class: 'btn btn-xs btn-primary margin-r-5'
+                = link_to 'Visualizar', meals_use_path(meals_use), class: 'btn btn-xs btn-success margin-r-5'
+                = link_to 'Excluir', meals_use_path(meals_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o consumo dessa refeição?' }
+    #tab-2.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Serviço
+          th data-sortable='true' Data da utilização
+          th Ações
+        tbody
+          - @booking.services_uses.each do |services_use|
+            tr
+              td = services_use.id
+              td = services_use.service.name
+              td = I18n.l services_use.used_at
+              td
+                = link_to 'Editar', edit_services_use_path(services_use), class: 'btn btn-xs btn-primary margin-r-5'
+                = link_to 'Visualizar', services_use_path(services_use), class: 'btn btn-xs btn-success margin-r-5'
+                = link_to 'Excluir', services_use_path(services_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o uso desse serviço?' }
+    #tab-3.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Produto-Cortesia
+          th data-sortable='true' Data da utilização
+          th Ações
+        tbody
+          - @booking.courtesies_uses.each do |courtesies_use|
+            tr
+              td = courtesies_use.id
+              td = courtesies_use.courtesy.name
+              td = I18n.l courtesies_use.used_at
+              td
+                = link_to 'Editar', edit_courtesies_use_path(courtesies_use), class: 'btn btn-xs btn-primary margin-r-5'
+                = link_to 'Visualizar', courtesies_use_path(courtesies_use), class: 'btn btn-xs btn-success margin-r-5'
+                = link_to 'Excluir', courtesies_use_path(courtesies_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o uso desse produto-cortesia?' }
+    #tab-4.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Ambiente
+          th data-sortable='true' Data da utilização
+          th Ações
+        tbody
+          - @booking.environments_uses.each do |enviroments_use|
+            tr
+              td = enviroments_use.id
+              td = enviroments_use.environment.name
+              td = I18n.l enviroments_use.used_at
+              td
+                = link_to 'Editar', edit_environments_use_path(enviroments_use), class: 'btn btn-xs btn-primary margin-r-5'
+                = link_to 'Visualizar', environments_use_path(enviroments_use), class: 'btn btn-xs btn-success margin-r-5'
+                = link_to 'Excluir', environments_use_path(enviroments_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a utilização do ambiente ?' }
+    #tab-5.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable="true" ID
+          th data-sortable="true" Data da limpeza
+          th data-sortable="true" Quarto
+          th Ações
+        tbody
+          - @booking.rooms.each do |room|
+            - room.cleaning_rooms.each do |cleaning_room|
+              tr
+                td = cleaning_room.id
+                td = I18n.l cleaning_room.cleaning_date
+                td = cleaning_room.room.to_label
+                td
+                  = link_to 'Editar', edit_cleaning_room_path(cleaning_room), class: 'btn btn-xs btn-primary margin-r-5'
+                  = link_to 'Visualizar', cleaning_room_path(cleaning_room), class: 'btn btn-xs btn-success margin-r-5'
+                  = link_to 'Excluir', cleaning_room_path(cleaning_room), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a limpeza desse quarto?' }
+    #tab-6.tab-pane
+      - if @booking.invoice.present?
+        p.margin-bottom
+          strong.margin-r-5 ID:
+          = @booking.invoice.id
+        p.margin-bottom
+          strong.margin-r-5 Valor Total:
+          = @booking.invoice.total_value
+        p.margin-bottom
+          strong.margin-r-5 Forma de Pagamento:
+          = @booking.invoice.payment_type
+        p.margin-bottom
+          strong.margin-r-5 Funcionário:
+          = @booking.invoice.employee.name

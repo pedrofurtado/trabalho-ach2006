@@ -1,0 +1,16 @@
+- content_for :page_title, 'Visualizar Limpeza de Quarto'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @cleaning_room.id
+
+p.margin-bottom
+  strong.margin-r-5 Data da limpeza:
+  = I18n.l @cleaning_room.cleaning_date
+
+p.margin-bottom
+  strong.margin-r-5 Quarto:
+  = @cleaning_room.room.to_label
+
+= link_to 'Editar', edit_cleaning_room_path(@cleaning_room), class: 'btn btn-xs btn-primary margin-r-5'
+= link_to 'Listar Limpeza de Quartos', cleaning_rooms_path, class: 'btn btn-xs btn-success margin-r-5'

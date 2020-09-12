@@ -1,0 +1,40 @@
+- content_for :page_title, 'Visualizar Refeição'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @meal.id
+
+p.margin-bottom
+  strong.margin-r-5 Nome:
+  = @meal.name
+
+p.margin-bottom
+  strong.margin-r-5 Preço:
+  = @meal.price
+
+.margin-bottom
+  = link_to 'Editar', edit_meal_path(@meal), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Refeições', meals_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Hóspedes que consumiram hoje
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Nome
+          th data-sortable='true' Telefone
+          th data-sortable='true' Email
+        tbody
+          - @meal.meals_uses.each do |meals_use|
+            - if meals_use.used_at == Date.today
+              tr
+                td = meals_use.booking.guest.id
+                td = meals_use.booking.guest.name
+                td = meals_use.booking.guest.phone
+                td = meals_use.booking.guest.email
+
+

@@ -1,0 +1,24 @@
+- content_for :page_title, 'Lista de Serviços'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Descrição
+        th data-sortable="true" Preço
+        th Ações
+      tbody
+        - @services.each do |service|
+          tr
+            td = service.id
+            td = service.name
+            td = service.description
+            td = service.price
+            td
+              = link_to 'Editar', edit_service_path(service), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', service_path(service), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', service_path(service), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o serviço?' }
+
+= link_to 'Criar Serviço', new_service_path, class: 'btn btn-warning'

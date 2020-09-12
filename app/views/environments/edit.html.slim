@@ -1,0 +1,8 @@
+- content_for :page_title, 'Editar Ambiente'
+
+= simple_form_for @environment do |f|
+  = validation_messages_for @environment
+  = f.input :name
+  = f.input :description
+  = f.input :price
+  = f.button :submit

@@ -1,0 +1,52 @@
+- content_for :page_title, 'Visualizar Ambiente'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @environment.id
+
+p.margin-bottom
+  strong.margin-r-5 Nome:
+  = @environment.name
+
+p.margin-bottom
+  strong.margin-r-5 Descrição:
+  = @environment.description
+
+p.margin-bottom
+  strong.margin-r-5 Preço:
+  = @environment.price
+
+.margin-bottom
+  = link_to 'Editar', edit_environment_path(@environment), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Ambientes', environments_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Hóspedes que utilizaram hoje
+    li
+      a aria-expanded='true' data-toggle='tab' href='#tab-2' Limpeza de Ambiente
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Nome
+          th data-sortable='true' Telefone
+          th data-sortable='true' Email
+        tbody
+          - @environment.environments_uses.where(used_at: Date.today).each do |environments_use|
+            tr
+              td = environments_use.booking.guest.id
+              td = environments_use.booking.guest.name
+              td = environments_use.booking.guest.phone
+              td = environments_use.booking.guest.email
+    #tab-2.tab-pane
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' Data da Limpeza
+        tbody
+          - @environment.cleaning_environments.each do |cleaning_environment|
+            tr
+              td = cleaning_environment.id
+              td = I18n.l cleaning_environment.cleaning_date

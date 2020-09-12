@@ -1,0 +1,10 @@
+- content_for :page_title, 'Criar Serviço'
+
+= simple_form_for @service do |f|
+  = validation_messages_for @service
+  = f.input :name
+  = f.input :description
+  = f.input :price
+  = f.association :courtesies
+  = f.association :rooms
+  = f.button :submit

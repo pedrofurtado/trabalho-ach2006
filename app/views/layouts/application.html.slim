@@ -1,0 +1,216 @@
+doctype html
+html
+  = render 'layouts/head'
+  body.skin-blue.sidebar-mini
+    .wrapper
+      header.main-header
+        = link_to root_path, class: 'logo' do
+          span.logo-mini MyH
+          span.logo-lg
+            = image_tag 'logotype_without_text', width: '30px', class: 'margin-r-5'
+            | My Hotel
+        nav.navbar.navbar-static-top role='navigation'
+          a.sidebar-toggle data-toggle='offcanvas' href='#' role='button'
+            span.sr-only
+          .navbar-custom-menu
+            ul.nav.navbar-nav
+              li
+                = link_to destroy_user_session_path do
+                  i.fa.fa-sign-out
+      aside.main-sidebar
+        section.sidebar
+          .user-panel
+            p style='color: #fff;'
+              = current_user.email
+            a style='font-size: 12px'
+              i.fa.fa-circle.text-success.margin-r-5
+              | Online
+          ul.sidebar-menu.tree data-widget='tree'
+            li.header
+            li
+              = link_to root_path do
+                i.fa.fa-home
+                span Página inicial
+            li.treeview
+              = link_to users_path do
+                i.fa.fa-user-circle-o
+                span Usuários
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Listar Usuários', users_path
+            li.treeview
+              = link_to guests_path do
+                i.fa.fa-users
+                span Hóspedes
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Hóspede', new_guest_path
+                li
+                  = link_to 'Listar Hóspedes', guests_path
+            li.treeview
+              = link_to employees_path do
+                i.fa.fa-address-card-o
+                span Funcionários
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Funcionário', new_employee_path
+                li
+                  = link_to 'Listar Funcionários', employees_path
+            li.treeview
+              = link_to services_path do
+                i.fa.fa-glass
+                span Serviços
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Serviço', new_service_path
+                li
+                  = link_to 'Listar Serviços', services_path
+            li.treeview
+              = link_to courtesies_path do
+                i.fa.fa-certificate
+                span Produtos-cortesia
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Produto-cortesia', new_courtesy_path
+                li
+                  = link_to 'Listar Produtos-cortesia', courtesies_path
+            li.treeview
+              = link_to rooms_path do
+                i.fa.fa-bed
+                span Quartos
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Quarto', new_room_path
+                li
+                  = link_to 'Listar Quartos', rooms_path
+            li.treeview
+              = link_to environments_path do
+                i.fa.fa-university
+                span Ambientes
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Ambiente', new_environment_path
+                li
+                  = link_to 'Listar Ambientes', environments_path
+            li.treeview
+              = link_to meals_path do
+                i.fa.fa-cutlery
+                span Refeições
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Refeição', new_meal_path
+                li
+                  = link_to 'Listar Refeições', meals_path
+            li.treeview
+              = link_to bookings_path do
+                i.fa.fa-calendar
+                span Reservas
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Reserva', new_booking_path
+                li
+                  = link_to 'Listar Reservas', bookings_path
+            li.treeview
+              = link_to cleaning_environments_path do
+                i.fa.fa-trash
+                span Limpeza dos Ambientes
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Limpeza do Ambiente', new_cleaning_environment_path
+                li
+                  = link_to 'Listar Limpeza dos Ambientes', cleaning_environments_path
+            li.treeview
+              = link_to invoices_path do
+                i.fa.fa-envelope
+                span Faturas
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Faturas', new_invoice_path
+                li
+                  = link_to 'Listar Faturas', invoices_path
+            li.treeview
+              = link_to cleaning_rooms_path do
+                i.fa.fa-trash
+                span Limpeza dos Quartos
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Limpeza do Quarto', new_cleaning_room_path
+                li
+                  = link_to 'Listar Limpeza do Quartos', cleaning_rooms_path
+            li.treeview
+              = link_to services_uses_path do
+                i.fa.fa-glass
+                span Uso dos Serviços
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Uso do Serviço', new_services_use_path
+                li
+                  = link_to 'Listar Usos do Serviços', services_uses_path
+            li.treeview
+              = link_to courtesies_uses_path do
+                i.fa.fa-certificate
+                span Uso dos Produtos-Cortesia
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Uso do Produto-Cortesia', new_courtesies_use_path
+                li
+                  = link_to 'Listar Usos do Produtos-Cortesia', courtesies_uses_path
+            li.treeview
+              = link_to environments_uses_path do
+                i.fa.fa-university
+                span Uso dos Ambientes
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Uso do Ambientes', new_environments_use_path
+                li
+                  = link_to 'Listar Usos do Ambientes', environments_uses_path
+            li.treeview
+              = link_to meals_uses_path do
+                i.fa.fa-cutlery
+                span Consumo de Refeições
+                span.pull-right-container
+                  i.fa.fa-angle-left.pull-right
+              ul.treeview-menu
+                li
+                  = link_to 'Criar Consumo de Refeição', new_meals_use_path
+                li
+                  = link_to 'Listar Consumo de Refeições', meals_uses_path
+      .content-wrapper
+        section.content-header
+          h1
+            = content_for :page_title
+        section.content.container-fluid
+          = flash_messages
+          = yield
+      footer.main-footer
+        | Copyright © #{Date.current.year} - My Hotel - Todos os direitos reservados.

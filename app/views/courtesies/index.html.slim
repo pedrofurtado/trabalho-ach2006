@@ -1,0 +1,24 @@
+- content_for :page_title, 'Lista de Produtos-cortesia'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Descrição
+        th data-sortable="true" Preço
+        th Ações
+      tbody
+        - @courtesies.each do |courtesy|
+          tr
+            td = courtesy.id
+            td = courtesy.name
+            td = courtesy.description
+            td = courtesy.price
+            td
+              = link_to 'Editar', edit_courtesy_path(courtesy), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', courtesy_path(courtesy), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', courtesy_path(courtesy), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o produto-cortesia?' }
+
+= link_to 'Criar Produto-cortesia', new_courtesy_path, class: 'btn btn-warning'

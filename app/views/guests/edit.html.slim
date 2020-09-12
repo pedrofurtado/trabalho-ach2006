@@ -1,0 +1,8 @@
+- content_for :page_title, 'Editar Hóspede'
+
+= simple_form_for @guest do |f|
+  = validation_messages_for @guest
+  = f.input :name
+  = f.input :phone
+  = f.input :email
+  = f.button :submit

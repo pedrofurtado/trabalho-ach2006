@@ -1,0 +1,9 @@
+- content_for :page_title, 'Criar Limpeza de Quarto'
+
+= simple_form_for @cleaning_room do |f|
+  = validation_messages_for @cleaning_room
+  = f.input :cleaning_date, as: :date,
+                       order: [:day, :month, :year],
+                       input_html: { class: 'input-date' }
+  = f.association :room
+  = f.button :submit

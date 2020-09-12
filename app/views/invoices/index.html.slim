@@ -1,0 +1,26 @@
+- content_for :page_title, 'Lista de Faturas'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Valor Total
+        th data-sortable="true" Forma de Pagamento
+        th data-sortable="true" Reserva
+        th data-sortable="true" Funcionário
+        th Ações
+      tbody
+        - @invoices.each do |invoice|
+          tr
+            td = invoice.id
+            td = invoice.total_value
+            td = invoice.payment_type
+            td = invoice.booking.to_label
+            td = invoice.employee.name
+            td
+              = link_to 'Editar', edit_invoice_path(invoice), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', invoice_path(invoice), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', invoice_path(invoice), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a fatura?' }
+
+= link_to 'Criar Fatura', new_invoice_path, class: 'btn btn-warning'

@@ -1,0 +1,8 @@
+- content_for :page_title, 'Editar Quarto'
+
+= simple_form_for @room do |f|
+  = validation_messages_for @room
+  = f.input :number
+  = f.input :guest_limit
+  = f.association :services
+  = f.button :submit

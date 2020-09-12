@@ -1,0 +1,23 @@
+- content_for :page_title, 'Lista de Consumos de Refeições '
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Reserva
+        th data-sortable="true" Refeição
+        th data-sortable="true" Data da utilização
+        th Ações
+      tbody
+        - @meals_uses.each do |meals_use|
+          tr
+            td = meals_use.id
+            td = meals_use.booking.to_label
+            td = meals_use.meal.name
+            td = I18n.l meals_use.used_at
+            td
+              = link_to 'Editar', edit_meals_use_path(meals_use), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', meals_use_path(meals_use), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', meals_use_path(meals_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o consumo dessa refeição?' }
+= link_to 'Criar Consumo de Refeição', new_meals_use_path, class: 'btn btn-warning'

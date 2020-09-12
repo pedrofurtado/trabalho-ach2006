@@ -1,0 +1,43 @@
+- content_for :page_title, 'Visualizar Funcionário'
+
+p.margin-bottom
+  strong.margin-r-5 ID:
+  = @employee.id
+
+p.margin-bottom
+  strong.margin-r-5 Nome:
+  = @employee.name
+
+p.margin-bottom
+  strong.margin-r-5 Telefone:
+  = @employee.phone
+
+p.margin-bottom
+  strong.margin-r-5 Cargo:
+  = @employee.office
+
+.margin-bottom
+  = link_to 'Editar', edit_employee_path(@employee), class: 'btn btn-xs btn-primary margin-r-5'
+  = link_to 'Listar Funcionários', employees_path, class: 'btn btn-xs btn-success margin-r-5'
+
+.nav-tabs-custom
+  ul.nav.nav-tabs
+    li.active
+      a aria-expanded='true' data-toggle='tab' href='#tab-1' Faturas
+  .tab-content
+    #tab-1.tab-pane.active
+      table.table.table-striped.table-bordered data-toggle='table'
+        thead
+          th data-sortable='true' ID
+          th data-sortable='true' Valor Total
+          th data-sortable='true' Forma de Pagamento
+          th data-sortable='true' Reserva
+          th data-sortable='true' Funcionário
+        tbody
+          - @employee.invoices.each do |invoice|
+              tr
+                td = invoice.id
+                td = invoice.total_value
+                td = invoice.payment_type
+                td = invoice.booking.to_label
+                td = invoice.employee.name

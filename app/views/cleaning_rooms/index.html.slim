@@ -1,0 +1,22 @@
+- content_for :page_title, 'Lista de Limpezas dos Quartos'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Data da limpeza
+        th data-sortable="true" Quarto
+        th Ações
+      tbody
+        - @cleaning_rooms.each do |cleaning_room|
+          tr
+            td = cleaning_room.id
+            td = I18n.l cleaning_room.cleaning_date
+            td = cleaning_room.room.to_label
+            td
+              = link_to 'Editar', edit_cleaning_room_path(cleaning_room), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', cleaning_room_path(cleaning_room), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', cleaning_room_path(cleaning_room), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir a limpeza desse quarto?' }
+
+= link_to 'Criar Limpeza de Quarto', new_cleaning_room_path, class: 'btn btn-warning'

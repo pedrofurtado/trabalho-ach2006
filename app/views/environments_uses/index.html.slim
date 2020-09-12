@@ -1,0 +1,23 @@
+- content_for :page_title, 'Lista de Usos dos Ambientes'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Reserva
+        th data-sortable="true" Ambiente
+        th data-sortable="true" Data da utilização
+        th Ações
+      tbody
+        - @environments_uses.each do |environments_use|
+          tr
+            td = environments_use.id
+            td = environments_use.booking.to_label
+            td = environments_use.environment.name
+            td = I18n.l environments_use.used_at
+            td
+              = link_to 'Editar', edit_environments_use_path(environments_use), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', environments_use_path(environments_use), class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', environments_use_path(environments_use), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o uso do ambiente?' }
+= link_to 'Criar Uso de Ambientes', new_environments_use_path, class: 'btn btn-warning'

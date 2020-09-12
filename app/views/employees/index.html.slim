@@ -1,0 +1,24 @@
+- content_for :page_title, 'Lista de Funcionários'
+
+.box
+  .box-body
+    table.table.table-striped.table-bordered data-toggle="table"
+      thead
+        th data-sortable="true" ID
+        th data-sortable="true" Nome
+        th data-sortable="true" Telefone
+        th data-sortable="true" Cargo
+        th Ações
+      tbody
+        - @employees.each do |employee|
+          tr
+            td = employee.id
+            td = employee.name
+            td = employee.phone
+            td = employee.office
+            td
+              = link_to 'Editar', edit_employee_path(employee), class: 'btn btn-xs btn-primary margin-r-5'
+              = link_to 'Visualizar', employee, class: 'btn btn-xs btn-success margin-r-5'
+              = link_to 'Excluir', employee, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Tem certeza que deseja excluir o funcionário?' }
+
+= link_to 'Criar Funcionário', new_employee_path, class: 'btn btn-warning'
